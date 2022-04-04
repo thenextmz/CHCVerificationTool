@@ -1,0 +1,3 @@
+def main(){
+	assume (x + 0)
+}

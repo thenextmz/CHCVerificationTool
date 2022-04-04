@@ -1,0 +1,12 @@
+def main(){
+	assume ((x % 2) != 0)
+	even := oddEven(x)
+	assert (even = 0)
+}
+def oddEven(x){
+    if((x % 2) == 0){
+        ret := 1
+    } else {
+        ret := 0
+    }
+}

@@ -1,0 +1,5 @@
+def main(){
+	assume (x >= 0);
+	sum := sum_upto(x)
+	assert (sum >= x)
+}

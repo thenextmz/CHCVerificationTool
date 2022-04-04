@@ -1,0 +1,41 @@
+def main(){
+	assume (x >= 0)
+	assume (y >= 0)
+	assume ((z % 2) != 0)
+	assume ((z2 % 2) == 0)
+	sum := sum_upto(x, y)
+	even := both_even(z, z2)
+	assert (sum >= (x + y))
+	assert (even == 1)
+}
+def sum_upto(x, y){
+	ret := 0
+
+	while (x > 0){
+	  ret := ret + x
+	  x := x - 1
+	}
+
+	while (y > 0){
+      ret := ret + y
+      y := y - 1
+    }
+}
+
+def both_even(z, z2){
+    if((z % 2) == 0){
+      ret := 1
+    } else {
+      ret := 0
+    }
+
+    if(ret == 1){
+      if((z2 % 2) == 0){
+        ret := 1
+      } else {
+        ret := 0
+      }
+    } else {
+      ret := 0
+    }
+}

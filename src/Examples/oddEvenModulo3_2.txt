@@ -1,0 +1,17 @@
+def main(){
+    assume (x > 0)
+    assume (x < 10)
+	assume ((x % 2) == 0)
+	even := oddEven(x)
+	assert (even = 0)
+}
+def oddEven(x){
+    while (x > 0){
+        x := x - 2
+    	if(x == 0){
+    	    ret := 1
+    	} else {
+    	    ret := 0
+    	}
+    }
+}

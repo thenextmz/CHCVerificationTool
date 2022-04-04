@@ -1,0 +1,7 @@
+def main(){
+	if(x != 0){
+	  x := x - 1
+	} else {
+
+	}
+}
