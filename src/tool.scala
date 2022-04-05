@@ -48,9 +48,6 @@ case class VariableList(v_list: List[Expression]) extends Expression
  * */
 class ProgramParser extends JavaTokenParsers {
 
-  // Variable for the invariant name counter
-  var inv_cnt = 0
-
   /** Program */
   def program: Parser[Program] =
     rep1(decl) ^^ {
@@ -96,9 +93,10 @@ class ProgramParser extends JavaTokenParsers {
       v => LocalVar(v)
     }
 
-  /* TODO: IMPLEMENT PROPERLY, without the "ND in the front we got a left-recursion endless-loop"
+  /* ND Is not implemented as we dont want to be able to use it in program code
+  // Also this gives a left-recursion endless loop
   private def non_det: Parser[NonDet] =
-    "ND" ~> body ~ "ND" ~ body ^^ {
+    body ~ "ND" ~ body ^^ {
       case s1 ~ _ ~ s2 => NonDet(s1, s2)
     }
    */
@@ -123,6 +121,8 @@ class ProgramParser extends JavaTokenParsers {
       case e ~ _ ~ _ ~ s1 ~ _ ~ _ ~ _ ~ s2 => IfElse(e, s1, s2)
     }
 
+  // Variable for the invariant name counter
+  var inv_cnt = 0
   private def while_loop: Parser[While] =
     "while" ~ "(" ~> expression_logic ~ ")" ~ "{" ~ while_body <~ "}" ^^ {
       case e ~ _ ~ _ ~ s =>
@@ -199,10 +199,22 @@ object parse extends ProgramParser {
 /** RUN */
 object main extends App {
 
-  /** Global Variables * */
+  /** Global Variables **/
   var variable_name_counter = 0
   var INS_BITVECTOR: Boolean = false
   var BITVEC_SIZE = 8
+
+  /**
+   * This function generates a new Integer for appending it to variable names
+   *
+   * @return Integer to append
+   * */
+  def getVarNum: Int = {
+    // Adding a number to variable names for distinction
+    variable_name_counter = variable_name_counter + 1
+    // Return
+    variable_name_counter
+  }
 
   /**
    * This function extracts all Variables occurring in a procedure
@@ -484,19 +496,6 @@ object main extends App {
   }
 
   /**
-   * This function generates a new Integer for appending it to variable names
-   *
-   * @return Integer to append
-   * */
-
-  def getVarNum: Int = {
-    // Adding a number to variable names for distinction
-    variable_name_counter = variable_name_counter + 1
-    // Return
-    variable_name_counter
-  }
-
-  /**
    * This function turns declarations into a lists of "wlp" for the algorithm later
    * Also it stores the variables occurring in the declaration -> procedure_variables
    *
@@ -665,7 +664,9 @@ object main extends App {
             expr_negated = E3(l, "==", r, negated)
         }
 
-      case _ => println("Something Went Wrong") // should not occur
+      case _ =>
+        println("Something Went Wrong") // should not occur
+        sys.exit(-1)
     }
     // Return
     expr_negated
@@ -1174,11 +1175,9 @@ object main extends App {
         sys.exit(-1)
       }
 
-      // TODO: Upper bound of BitvecSize
       if(args(2).toInt > 0){
         BITVEC_SIZE = args(2).toInt
       } else {
-        // TODO: Adapt error message to upper bound
         println("Bit-vector size must be greater than zero!")
         sys.exit(-1)
       }
@@ -1330,9 +1329,10 @@ object main extends App {
   println("---------------------------------------------------------------")
   // End Timer for Z3
   val duration2 = (System.nanoTime - t2) / 1e9d
-  println("Parsing and CHC-Transformation took:            " + duration1 + " Seconds")
-  println("Z3 Solver took:                                 " + duration2 + " Seconds")
+  println("Parsing and CHC-Transformation took:   " + duration1 + " Seconds")
+  println("Z3 Solver took:                        " + duration2 + " Seconds")
 
   // Delete Python File after usage
   //new File("z.py").delete()
+  println("---------------------------------------------------------------")
 }
