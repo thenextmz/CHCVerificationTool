@@ -1,6 +1,9 @@
 # A Tool for Verifying Programs using Constraint Horn Clauses
 
-Description!?
+This is a tool for program verification that uses the theories of 
+Constraint Horn Clauses and an algorithm based on the weakest 
+liberal precondition algorithm seen in the paper [Horn Clause Solvers for Program Verification](https://link.springer.com/chapter/10.1007/978-3-319-23534-9_2)
+by Nikolaj Bjørner et al..
 
 ## Installation
 
@@ -27,8 +30,8 @@ pip install z3-solver
 ```
 
 ## Usage
-Inside the src folder where the toHorn.scala file lies run:
+Inside the src folder where the tool.scala file lies run:
 ```bash
 scala -nc toHorn.scala ../FILEPATH/inputFile.txt [-bv BitVectorSize]
 ```
-The optional parameter -bv BitvectorSize determines if bitvector arithmetic is to be used instead of integer arithmetic
+The optional parameter -bv determines if bitvector arithmetic is to be used instead of integer arithmetic and the BitvectorSize determines its size. The BitvectorSize argument is mandatory is the -bv flag is used.
