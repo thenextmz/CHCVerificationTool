@@ -32,6 +32,6 @@ pip install z3-solver
 ## Usage
 Inside the src folder where the tool.scala file lies run:
 ```bash
-scala -nc toHorn.scala ../FILEPATH/inputFile.txt [-bv BitVectorSize]
+scala -nc tool.scala ../FILEPATH/inputFile.txt [-bv BitVectorSize]
 ```
 The optional parameter -bv determines if bitvector arithmetic is to be used instead of integer arithmetic and the BitvectorSize determines its size. The BitvectorSize argument is mandatory is the -bv flag is used.
