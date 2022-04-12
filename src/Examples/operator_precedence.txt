@@ -1,0 +1,13 @@
+def main(){
+
+    !!!No Operator precedence!!!
+
+    even := 1 + 2 / 3 + 4 => Wrong Evaluation
+    even := 1 + 2 / (3 + 4) => Wrong Evaluation
+	even := (1 + 2) / (3 + 4) => Right Evaluation
+
+	even := (1 + 2) / (3 + 4) / (4 + 6) => Wrong Evaluation
+	even := ((1 + 2) / (3 + 4)) / (4 + 6) => Right
+
+	ret := p(even)
+}
