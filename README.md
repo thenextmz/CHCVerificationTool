@@ -34,4 +34,20 @@ Inside the src folder where the tool.scala file lies run:
 ```bash
 scala -nc tool.scala ../FILEPATH/inputFile.txt [-bv BitVectorSize]
 ```
-The optional parameter -bv determines if bitvector arithmetic is to be used instead of integer arithmetic and the BitvectorSize determines its size. The BitvectorSize argument is mandatory is the -bv flag is used.
+The optional parameter -bv determines if bitvector 
+arithmetic is to be used instead of integer arithmetic 
+and the BitvectorSize determines its size. 
+The BitvectorSize argument is mandatory is the -bv flag is used.
+
+## No operator precedence!
+When writing programs note that there is no no operator precedence. 
+In this case this can be achieved by using parentheses in the right way. 
+See the following examples for more explanation. 
+```bash
+even := 1 + 2 / 3 + 4 =>      Wrong Evaluation
+even := 1 + 2 / (3 + 4) =>    Wrong Evaluation
+even := (1 + 2) / (3 + 4) =>  Right Evaluation
+
+even := (1 + 2) / (3 + 4) / (4 + 5) =>    Wrong Evaluation
+even := ((1 + 2) / (3 + 4)) / (4 + 5) =>  Right Evaluation
+```
