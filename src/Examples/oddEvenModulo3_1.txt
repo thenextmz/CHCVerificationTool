@@ -1,7 +1,3 @@
-I have Manually generated the Clauses and had the same result as my translation with the
-tool. If ive done everything correct regarding manual translation as well as my implementation
-i cant explain why this wont terminate without the restriction in line nr. 7.
-
 def main(){
     assume (x > 0)
     assume (x < 10)

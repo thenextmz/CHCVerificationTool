@@ -248,20 +248,8 @@ object main extends App {
         getAllVariables(function.E, null, var_buffer)
 
       case E3(l, m, r, negated) =>
-        l match {
-          case E3(l, m, r, negated) => getAllVariables(l, null, var_buffer)
-          case Variable(name, negated) => var_buffer += Variable(name)
-          case Constant(v) =>
-          case Function(p, e) => // this should not occur
-          case VariableList(v_list) => // this should not occur
-        }
-        r match {
-          case E3(l, m, r, negated) => getAllVariables(r, null, var_buffer)
-          case Variable(name, negated) => var_buffer += Variable(name)
-          case Constant(v) => // nothing to do here
-          case Function(p, e) => // this should not occur
-          case VariableList(v_list) => // this should not occur
-        }
+        getAllVariables(l, null, var_buffer)
+        getAllVariables(r, null, var_buffer)
 
       case Function(p, e) => getAllVariables(e, null, var_buffer)
 
