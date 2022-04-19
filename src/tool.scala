@@ -516,7 +516,7 @@ object main extends App {
         declaration.S.S.head,
         declaration.S.S.drop(1).to[ListBuffer].asInstanceOf[ListBuffer[Any]],
         procedure_variables_tmp)
-    println("Procedure Vars: " + procedure_variables)
+    //println("Procedure Vars: " + procedure_variables)
 
     // Case: Main Without Arguments
     if(func_name == "main" && func_param.isEmpty){
