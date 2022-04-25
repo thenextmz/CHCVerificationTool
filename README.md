@@ -44,10 +44,10 @@ When writing programs note that there is no no operator precedence.
 In this case this can be achieved by using parentheses in the right way. 
 See the following examples for more explanation. 
 ```bash
-even := 1 + 2 / 3 + 4 =>      Wrong Evaluation
-even := 1 + 2 / (3 + 4) =>    Wrong Evaluation
-even := (1 + 2) / (3 + 4) =>  Right Evaluation
+x := 1 + 2 / 3 + 4 =>      Wrong Evaluation
+x := 1 + 2 / (3 + 4) =>    Wrong Evaluation
+x := (1 + 2) / (3 + 4) =>  Right Evaluation
 
-even := (1 + 2) / (3 + 4) / (4 + 5) =>    Wrong Evaluation
-even := ((1 + 2) / (3 + 4)) / (4 + 5) =>  Right Evaluation
+x := (1 + 2) / (3 + 4) / (4 + 5) =>    Wrong Evaluation
+x := ((1 + 2) / (3 + 4)) / (4 + 5) =>  Right Evaluation
 ```
