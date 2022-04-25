@@ -36,8 +36,8 @@ scala -nc tool.scala ../FILEPATH/inputFile.txt [-bv BitVectorSize]
 ```
 The optional parameter -bv determines if bitvector 
 arithmetic is to be used instead of integer arithmetic 
-and the BitvectorSize determines its size. 
-The BitvectorSize argument is mandatory is the -bv flag is used.
+and the BitVectorSize determines its size. 
+The BitVectorSize argument is mandatory if the -bv flag is used.
 
 ## No operator precedence!
 When writing programs note that there is no no operator precedence. 
