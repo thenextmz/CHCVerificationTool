@@ -1,0 +1,12 @@
+def main(){
+  assume (x > 0)
+  assume (y > 0)
+  assume (x > y)
+  result := sub(x, y)
+
+  assert (result <= 0)
+}
+
+def sub(x, y){
+  ret := (x - y)
+}

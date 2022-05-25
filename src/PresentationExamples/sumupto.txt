@@ -1,0 +1,13 @@
+def main(){
+	assume (x >= 0)
+	sum := sum_upto(x)
+	assert (sum >= x)
+}
+def sum_upto(x){
+	ret := 0
+	while (x > 0){
+		ret := ret + x
+		x := x - 1
+	}
+}
+
